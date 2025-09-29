@@ -1,0 +1,23 @@
+-
+  name: play 1
+  hosts: localhost
+  tasks:
+    - name: Execute command 'date'
+      command: date
+
+    - name: Execute script on server
+      script: test_script.sh
+
+- name: play 2
+  hosts: localhost
+  tasks:
+    - name: Install Apache web service
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Apache web service
+      service:
+        name: apache2
+        state: started
+      when: not ansible_check_mode

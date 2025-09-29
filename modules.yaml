@@ -1,0 +1,8 @@
+- name: add a line in /etc/hosts
+  hosts: localhost
+  tasks:
+      - name: add dns server
+        lineinfile:
+          path=/etc/hosts 
+          line='10.0.0.20 web2'
+

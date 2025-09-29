@@ -1,0 +1,32 @@
+all:
+  hosts:
+    web1:
+      ansible_host: web1.test.com
+    web2:
+      ansible_host: web2.test.com
+    db1:
+      ansible_host: db1.test.com
+    db2:
+      ansible_host: db2.test.com
+
+  children:
+    webservers:
+      hosts:
+        web1:
+        web2:
+    dbservers:
+      hosts:
+        db1:
+        db2:
+    ubuntu22:
+      hosts:
+        web1:
+        web2:
+        db2:
+    ubuntu18:
+      hosts:
+        db1:
+    ubuntu:
+      children:
+        ubuntu22:
+        ubuntu18:

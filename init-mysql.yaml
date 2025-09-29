@@ -1,0 +1,4 @@
+- name: Install and configure mysql
+  hosts: dbservers
+  roles:
+  - mysql
