@@ -3,10 +3,10 @@
   become: yes
   tasks:
       - name: Install htop package
-      apt:
+        apt:
           name: htop
           state: present
-      when: ansible_facts['os_family'] == 'Debian'
+        when: ansible_facts['os_family'] == 'Debian'
 
 - name: Install a package on RedHat hosts
   hosts: redhat
