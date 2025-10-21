@@ -1,0 +1,16 @@
+- name: Send email if system is down
+  hosts: localhost
+  vars:
+    send_email: true
+  tasks:
+    - name: Status of Apache web service
+      command: systemctl status apache2
+      register: result
+    - name: Send email if send_email is true and system is down
+      mail:
+        to: admin@test.com
+        subject: "Apache on {{ inventory_hostname }} is down"
+        body: "Apache Service on {{ inventory_hostname }} is down. Check the system imediately!"
+      when: 
+        - result.rc != 0
+        - vars.send_email
