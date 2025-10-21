@@ -1,0 +1,14 @@
+- name: Install a package in all linux distros
+  hosts: all
+  become: yes
+  tasks:
+    - name: install package on debian destros
+      apt:
+        name: htop
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: install package on redhat destros
+      yum:
+        name: htop
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
