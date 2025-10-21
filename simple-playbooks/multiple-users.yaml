@@ -1,0 +1,13 @@
+- name: Create Multiple Users
+  hosts: all
+  vars:
+    users:
+      - name: Shahab
+      - name: Ali
+      - name: Sara
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item.name }}"
+        state: present
+      loop: "{{ vars.users }}"
