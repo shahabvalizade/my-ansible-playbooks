@@ -1,0 +1,20 @@
+- name: Install only required package from a list
+  hosts: localhost
+  vars:
+    packages:
+      - name: htop
+        required: true
+      - name: vim
+        required: false
+      - name: curl
+        required: true
+      - name: git
+        required: false
+  tasks:
+    - name: Install required packages
+      apt:
+        name: "{{ item.name }}"
+        state: present
+      when:
+        - item.required
+      loop: "{{ packages }}"
