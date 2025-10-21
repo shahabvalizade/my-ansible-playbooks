@@ -1,0 +1,19 @@
+- name: command and script
+  hosts: localhost
+  tasks:
+    - name: run date command
+      command: date
+    - name: run script
+      command: test_script.sh
+- name: install and start service
+  hosts: localhost
+  tasks:
+    - name: install service
+      apt:
+        name: apache2
+        state: present
+    - name: Start service
+      service:
+        name: apache2
+        state: started
+      when: not ansible_check_mode
