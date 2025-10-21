@@ -1,0 +1,9 @@
+- name: add a line to a file (idemponent version)
+  hosts: localhost
+  vars:
+    content: "172.13.1.2 redis.test.com"
+  tasks:
+    - name: add a line to a file if it is not there
+      lineinfile:
+        path=/etc/hosts
+        line="{{ vars.content }}"
