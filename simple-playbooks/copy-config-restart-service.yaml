@@ -1,0 +1,27 @@
+- name: Change config and restart a service
+  hosts: localhost
+  tasks:
+    - name: change a static file
+      copy:
+        src: /home/user/app/file.css
+        dest: /var/www/html/
+    - name: restart apache2
+      service:
+        name: apache2
+        state: restarted
+
+
+- name: Improved version of previous playbook
+  hosts: localhost
+  tasks:
+    - name: change a static file
+      copy:
+        src: /home/user/app/file.css
+        dest: /var/www/html/
+      notify:
+        - restart-apache
+  handlers:
+    - name: restart apache2
+      service:
+        name: apache2
+        state: restarted
