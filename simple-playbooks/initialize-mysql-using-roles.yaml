@@ -1,4 +1,4 @@
 - name: Initialize mysql database using roles in ansible
   hosts: localhost
   roles:
-    - /home/shahab/ProjectsArea/programmingtest/my-ansible-playbooks/roles/mysql
+    - mysql
