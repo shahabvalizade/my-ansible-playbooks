@@ -1,0 +1,7 @@
+- name: Test template module with j2
+  hosts: localhost
+  tasks:
+    - name: Create a file from template
+      template:
+        src: copy-host-template-file.txt.j2
+        dest: /tmp/copy-host-template-file.txt
